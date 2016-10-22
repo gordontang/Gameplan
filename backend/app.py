@@ -15,15 +15,18 @@ def hello_world():
         return 'Hello, World!'
 
 @app.route('/add_survey', methods=['POST'])
+@crossdomain(origin='*')
 def add_sign_in_survey():
     pass
 
 @app.route('/sign_up_survey', methods=['GET'])
+@crossdomain(origin='*')
 def get_sign_up_survey():
     survey = mongo.db.survey.find().sort('upload_date', PyMongo.DESCENDING)[0]
     return jsonify(survey)
 
 @app.route('/', methods=['POST'])
+@crossdomain(origin='*')
 def get_user_id():
     user_name = request.form['name']
     user_email = request.form['email']
@@ -33,6 +36,7 @@ def get_user_id():
 
 
 @app.route('/create_new_user', methods=['POST'])
+@crossdomain(origin='*')
 def create_user(user_key):
     survey_results = request.form['survey_results']
 
@@ -66,6 +70,7 @@ def get_all_journeys():
     return jsonify(journeys)
 
 @app.route('/journeys', methods=['POST'])
+@crossdomain(origin='*')
 def upload_journey():
     journey = request.form['journey']
 
@@ -73,6 +78,7 @@ def upload_journey():
     return result.inserted_id
 
 @app.route('/add_journey_user', methods=['POST'])
+@crossdomain(origin='*')
 def add_journey_user():
     user_id = request.form['user_id']
     journey_id = request.form['journey_id']
@@ -85,20 +91,22 @@ def add_journey_user():
                          )
 
 @app.route('/user/<user_id>', methods=['GET'])
+@crossdomain(origin='*')
 def get_user(user_id):
-    user = mongo.db.users.find_one({'_id': user_id})
+    user = mongo.db.users.find_one({'user': user_id})
     #null check
     return jsonify(user)
 
-@app.route('/user/steve', methods=['GET'])
-def get__test_user():
-    print("in steve")
-    with open('../json_mocks/user_w_journey.json') as f:
-        json_data = json.load(f)
-    print json_data
-    return jsonify(json_data)
+#@app.route('/user/steve', methods=['GET'])
+#def get__test_user():
+#    print("in steve")
+#    with open('../json_mocks/user_w_journey.json') as f:
+#        json_data = json.load(f)
+#    print json_data
+#    return jsonify(json_data)
 
 @app.route('/update_journey_status', methods=['POST'])
+@crossdomain(origin='*')
 def update_user_status():
     user_id = request.form['user_id']
     user_status = request.form['status']
