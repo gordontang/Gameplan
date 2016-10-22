@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $('#login-button').click(function (e) {
+    console.log('ola!');
     e.preventDefault();
     showPlans();
   });
