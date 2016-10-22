@@ -1,14 +1,9 @@
 from flask import Flask
 from flask.ext.pymongo import PyMongo
+from config import init_users_db, init_journeys_db
 import json
 
-app = Flask(__name__)
-mongo = PyMongo(app)
-
-app.config['MONGOD_HOST'] = 'ec2-54-167-222-78.compute-1.amazonaws.com'
-app.config['MONGOD_PORT'] = 27017
-app.config['MONGOD_DBNAME'] = 'users'
-mongo = PyMongo(app, config_prefix='MONGOD')
+app = Flask(__name__) 
 
 @app.route('/')
 def hello_world():
@@ -29,8 +24,12 @@ def create_user(user_key):
 
 @app.route('/journeys', methods=['GET'])
 def get_all_journeys():
-    journeys = mongo.db.journeys.find()
-    return journeys
+    journeys = journeys_db.db.test.find_one_or_404({'journey':'rrsp'})
+    print journeys
+    for j in journeys:
+        print journeys
+    journeys.pop('_id')
+    return json.dumps(journeys)
 
 @app.route('/add_journey', methods=['POST'])
 def add_journey():
@@ -46,7 +45,7 @@ def add_journey():
 
 @app.route('/user_journey/<user_id>', methods=['GET'])
 def get_user(user_id):
-    journey = mongo.db.journey.find_one_or_404({'user': user_id})
+    journey = users_db.db.journey.find_one_or_404({'user': user_id})
     #null check
     journey.pop('_id')
     result = json.dumps(journey)
@@ -67,5 +66,6 @@ def update_user_status():
     mongo.db.users.replace_one({'_id': user_id}, user_status)
 
 if __name__ == "__main__":
+    users_db=init_users_db(app)
+    journeys_db=init_journeys_db(app)
     app.run(port=27020)
-
