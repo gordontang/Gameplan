@@ -5,6 +5,10 @@ import json
 app = Flask(__name__)
 mongo = PyMongo(app)
 
+app.config['MONGOD_HOST'] = 'ec2-54-167-222-78.compute-1.amazonaws.com'
+app.config['MONGOD_PORT'] = 27017
+app.config['MONGOD_DBNAME'] = 'users'
+mongo = PyMongo(app, config_prefix='MONGOD')
 
 @app.route('/')
 def hello_world():
@@ -40,11 +44,12 @@ def add_journey():
                            }}}
                          )
 
-@app.route('/user/<user_id>', methods=['GET'])
+@app.route('/user_journey/<user_id>', methods=['GET'])
 def get_user(user_id):
-    user = mongo.db.users.find_one({'_id': user_id})
+    journey = mongo.db.journey.find_one({'user': user_id})
     #null check
-    return user
+    print journey
+    return journey
 
 @app.route('/user/steve', methods=['GET'])
 def get__test_user():
@@ -61,5 +66,5 @@ def update_user_status():
     mongo.db.users.replace_one({'_id': user_id}, user_status)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port=27020)
 
