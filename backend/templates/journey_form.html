@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Handle POST requests with Flask</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>POST request with Flask</h1>
+            </div>
+            <div id="content">
+                <form method="post" action="{{ url_for('add_journey') }}">
+                  <label for="userid">Please enter user name:</label>
+                  <input type="text" name="user_name" /><br />
+                  <label for="journeyid">Please enter journey name:</label>
+                  <input type="text" name="journey_name" /><br />
+                  <input type="submit" />
+                </form>
+            </div>
+            <div class="title">
+                <h1>Flask code</h1>
+            </div>
+        </div>
+    </body>
+</html>
+ 

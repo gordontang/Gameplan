@@ -2,32 +2,201 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Make charities great again">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Make charities great again</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css" >
+    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js.cookie.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="login.js"></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="margin-bottom:-10px;">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Game Plan</a>
+          <a class="navbar-brand" href="/UI/">Game Plan</a>
         </div>
 
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="login-button" href="">Login</a></li>
-            <li><a id="signup-button" href="">Sign up</a></li>
-          </ul>
+          <form id="signin" class="navbar-form navbar-right" role="form">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" placeholder="you@example.com" style="height:30px">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password" style="height:30px" >
+              </div>
+              <button id="login-button" type="button" class="btn btn-success" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Login</button>
+              <button id="btnSubmit" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
+          </form>
+        </div>
+    </nav>
+
+<div class="jumbotron">
+  <div class="row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6" id="jumbotext">
+  <h1>SET YOUR GOALS</h1>
+  <h1>TRACK PROGRESS</h1>
+  <h1>GET AHEAD</h1>
+</div>
+</div>
+</div>
+
+<div id="jModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:75%; height:65%">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div id = "mod-body" class="modal-body">
+      <div class="row">
+    	<div class="col-lg-3">
+    				<div class="cuadro_intro_hover " style="background-color:#cccccc;">
+						<p style="text-align:center; margin-top:20px;">
+							<img src="static/creditcard300.png" class="img-responsive" alt="">
+						</p>
+						<div class="caption">
+							<div class="blur"></div>
+							<div class="caption-text">
+								<h3 style="padding:10px;">Get out of Debt</h3>
+								<p>Build a gameplan to get out of debt and rebuild your credit</p>
+								<button id="btnSubmit" type="button" class="btn btn-info"> Add </type>
+							</div>
+						</div>
+					</div>
+	    </div>
+      <div class="col-lg-3">
+    				<div class="cuadro_intro_hover " style="background-color:#cccccc;">
+						<p style="text-align:center; margin-top:20px;">
+							<img src="static/creditcard300.png" class="img-responsive" alt="">
+						</p>
+						<div class="caption">
+							<div class="blur"></div>
+							<div class="caption-text">
+								<h3 style="padding:10px;">Get out of Debt</h3>
+								<p>Build a gameplan to get out of debt and rebuild your credit</p>
+								<button id="btnSubmit" type="button" class="btn btn-info"> Add </type>
+							</div>
+						</div>
+					</div>
+	    </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+      <button id="loginModalSubmit" type="button" class="btn btn-success" data-dismiss="modal">Finish</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">We just need to know a little bit more about you to get started.</h4>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>Do you have a bank account?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <form>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">No
+                    </label>
+                  </form>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>Do you have a RRSP?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <form>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">No
+                    </label>
+                  </form>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>What is your income range?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Income range<span class="caret" style="margin-left:5px;"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">0 - 10,000</a></li>
+                      <li><a href="#">10,000 - 20,000</a></li>
+                      <li><a href="#">20,000 - 30,000</a></li>
+                      <li><a href="#">30,000 - 40,000</a></li>
+                      <li><a href="#">40,000 - 50,000</a></li>
+                      <li><a href="#">More than 50,000</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>What is your age group?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Age group<span class="caret" style="margin-left:5px;"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">18 - 25</a></li>
+                      <li><a href="#">25 - 35</a></li>
+                      <li><a href="#">35 - 45</a></li>
+                      <li><a href="#">45 - 55</a></li>
+                      <li><a href="#">55 - 65</a></li>
+                      <li><a href="#">> 65</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>How many children do you have?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Children<span class="caret" style="margin-left:5px;"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">0</a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">> 4</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#jModal">Next</button>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
   </body>
 </html>

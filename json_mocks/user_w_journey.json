@@ -8,12 +8,13 @@
 "journeys":
 [
 {"journey":"Start an RRSP",
+"current_step":"1",
 "steps":[
   { "type":"learning",
     "description":"Learn about Banking Services",
   "link":"http://prospercanada.org/prospercanada/media/PDF/Facilitator%20Tools/English/Module%204/Participant_Handbook_Module-4.pdf",
   "points":"10",
-  "complete":"false"},
+  "complete":"2016-09-20"},
   { "type":"behavioral",
     "description":"Talk to a financial advisor at your bank",
   "link":"",
@@ -37,6 +38,7 @@
 ]
 },
 {"journey":"Start a Savings Account",
+"current_step":"0",
 "steps":[
   { "type":"learning",
     "description":"Learn about Banking Services",
