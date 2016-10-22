@@ -3,6 +3,8 @@ from flask.ext.pymongo import PyMongo
 from config import init_users_db, init_journeys_db
 import json
 import urllib2
+from datetime import datetime
+
 app = Flask(__name__) 
 from crossdomain import crossdomain
 
@@ -69,7 +71,7 @@ def get_user_journey(user_id):
     journey.pop('_id')
     print journey
     result = json.dumps(journey)
-    return result
+    return jsonify(result)
 
 @app.route('/user/<user_name>', methods=['GET'])
 @crossdomain(origin='*')
@@ -84,18 +86,31 @@ def get_user(user_name):
 @crossdomain(origin='*')
 def update_user_status(user_name, journey_id, flag):
     user_journey = users_db.db.journey.\
-                     find_one_or_404({
-                                        'user': user_name,
-                                        'journeys' : {"$elemMatch": {'journey':journey_id}}
-                                      })
-    res = user_journey.pop('_id')
-    print user_journey
-    #user_status = request.form['status']
-    #mongo.db.users.replace_one({'_id': user_id}, user_status)
-    return json.dumps(user_journey)
+                     find_one_or_404({'user': user_name,
+                                      'journeys' : {"$elemMatch": {'journey':journey_id}}})
+    user_journey.pop('_id')
+    ix = 0
+    while ix < len(user_journey['journeys']):
+        if user_journey['journeys'][ix]['journey'] == journey_id:
+            break
+        ix += 1
+
+    if 'journey_completed' in user_journey['journeys'][ix]:
+        return "Journey already completed!"
+
+    step_ix = user_journey['journeys'][ix]['current_step']
+    dt = str(datetime.now())
+    user_journey['journeys'][ix]['steps'][step_ix]['complete'] = dt.split(' ')[0]
+    user_journey['journeys'][ix]['current_step'] += 1
+
+    if user_journey['journeys'][ix]['current_step'] == len(user_journey['journeys'][ix]['steps']):
+        user_journey['journeys'][ix]['journey_completed'] = True
+
+    rec_id = users_db.db.journey.update({'user': user_name}, user_journey)
+    return "success"
 
 if __name__ == "__main__":
     users_db=init_users_db(app)
     journeys_db=init_journeys_db(app)
-    app.run(host='0.0.0.0',port=27020, debug=True)
+    app.run(host='0.0.0.0',port=27020, threaded=True, debug=True)
 
