@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, jsonify, render_template, request, url_for
 from flask.ext.pymongo import PyMongo
 from config import init_users_db, init_journeys_db
