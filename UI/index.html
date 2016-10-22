@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js.cookie.js"></script>
     <script type="text/javascript" src="index.js"></script>
-
+    <script type="text/javascript" src="login.js"></script>
     <style>
       #emailSignUp {
       text-align: right;
@@ -30,42 +30,6 @@
     text-shadow: black 0.1em 0.1em 0.2em
     }
       </style>
-
-<script>
- var formData = new FormData();
- $(document).ready(function() {
-    //Initialize userData object-
-    userData = {};
-
-     $("#btnSubmit").click(function(){
-       //first join button with username and email - parses field data into userData object
-           var x = $("form").serializeArray();
-           console.log(x);
-           $.each(x, function(i, field){
-              console.log(field);
-              console.log(field.name);
-              userData[field.name] = field.value;
-            });
-       });
-     $("#loginModalSubmit").click(function(){
-        //second submit button from modal - again parses form data into userData object
-           console.log("in mod submit");
-           var x = $("form").serializeArray();
-           console.log(x);
-           $.each(x, function(i, field){
-              console.log(field);
-              console.log(field.name);
-              userData[field.name] = field.value;
-            });
-            //submit to endpoint
-            //$.post( "test.php", JSON.stringify(userData))
-            //  .done(function( data ) {
-            //    alert( "Data Loaded: " + data );
-            //  });
-       });
-
- });
-</script>
   </head>
 
   <body>
