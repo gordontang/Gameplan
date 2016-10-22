@@ -13,6 +13,26 @@
     <script type="text/javascript" src="js.cookie.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="login.js"></script>
+    <style>
+      #emailSignUp {
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      #qLabel {
+        text-align: right;
+      }
+      .jumbotron {
+    margin-bottom: 0px;
+    background-image: url(static/photo-1470083748587-df49227c0505.jpeg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em
+    }
+      </style>
   </head>
 
   <body>
@@ -63,13 +83,12 @@
       </div>
 
       <div id = "mod-body" class="modal-body">
-          <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
-          <form class="form-inline" id="myform">
-            <div class="row">
+        <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
+        <form class="form-inline" id="myform">
+            <div class="row" align="right">
             <div class="col-lg-4">
           <div class="form-group">
-          <label for="ageSelect">What is yor age?</label>
-          <div float="right">
+          <label class="qLabel" for="ageSelect">What is yor age?</label>
           <select class="form-control" name="age">
             <option>Under 19</option>
             <option>20-30</option>
@@ -77,7 +96,7 @@
             <option>40-50</option>
             <option>50+</option>
           </select>
-        </div>
+
           </div>
 
           <br>
@@ -107,11 +126,6 @@
             <option>No</option>
           </select>
           </div>
-
-
-
-
-
         </form>
 
 </div>
