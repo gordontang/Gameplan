@@ -14,12 +14,12 @@ def hello_world():
 @app.route('/new_user', methods=['POST'])
 @crossdomain(origin='*')
 def create_user():
+    # insert user
     user = {k: request.form[k] for k in request.form}
-    #new_user = json.load('user_profile_template.json')
-    #new_user['survey_results'] = survey_results
-    user['journeys'] = []
-    print user
     i_results = users_db.db.info.insert_one(user)
+    # insert user journey
+    user['journeys'] = []
+    i_results = users_db.db.journey.insert_one(user)
     return "Success"
 
 @app.route('/create_user')
