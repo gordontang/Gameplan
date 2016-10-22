@@ -1,6 +1,7 @@
 $(document).ready(function() {
   displayUserInfo();
   captureDates();
+  displayJourneys();
 
   $('#logout-button').click(function (e) {
     e.preventDefault();
@@ -8,9 +9,34 @@ $(document).ready(function() {
   });
 });
 
+var displayJourneys = function () {
+  var user = JSON.parse($.cookie("data"));
+  var journeys = user.journeys;
+  var i;
+  var node = $('#journeys');
+
+  for (i = 0; i < journeys.length; i++) {
+    var icon = getJourneyIcon(journeys[i]);
+    var e = $('<div class="col-md-4 text-center"><img height="300" width="300" /><button type="button" class="btn btn-success" style="margin-top:10px;">GET MOVING</button></div>');
+    $('img', e).attr('src', icon);
+    node.append(e);
+  }
+};
+
+var getJourneyIcon = function (journey) {
+  switch(journey.journey) {
+    case 'Start an RRSP':
+      return 'x';
+    case 'Start a Savings Account':
+      return 'y';
+    default:
+      return '';
+  }
+};
+
 var displayUserInfo = function () {
-  var user = JSON.parse($.cookie("user"));
-  $('#username')[0].innerHTML = 'Welcome ' + user.name + '!';
+  var user = JSON.parse($.cookie("data"));
+  $('#username')[0].innerHTML = 'Welcome ' + user.user + '!';
 };
 
 var captureDates = function () {
