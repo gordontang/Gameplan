@@ -2,16 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Make charities great again">
-    <title>Make charities great again</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Make charities great again</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js.cookie.js"></script>
     <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="login.js"></script>
+    <style>
+      #emailSignUp {
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      }
+      .jumbotron {
+    margin-bottom: 0px;
+    background-image: url(static/photo-1470083748587-df49227c0505.jpeg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em
+    }
+      </style>
   </head>
 
   <body>
@@ -22,12 +40,104 @@
         </div>
 
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="login-button" href="">Login</a></li>
-            <li><a id="signup-button" href="">Sign up</a></li>
-          </ul>
+          <form id="signin" class="navbar-form navbar-right" role="form">
+              <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="text" class="form-control" name="user" placeholder="Jane_Doe" style="height:30px">
+              </div>
+              <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="jane.doe@example.com" style="height:30px" >
+              </div>
+            <a id="login-button" href="">Login</a>
+            <button  id="btnSubmit" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
+          </form>
         </div>
-      </div>
+
     </nav>
+
+<div class="jumbotron">
+  <div class="row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6" id="jumbotext">
+  <h1>SET YOUR GOALS</h1>
+  <h1>TRACK PROGRESS</h1>
+  <h1>GET AHEAD</h1>
+</div>
+</div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:75%; height:65%">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Additional Information</h4>
+        <!--<img src="static/img_logo_header.jpg" class="img-responsive">-->
+      </div>
+
+      <div id = "mod-body" class="modal-body">
+          <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
+          <form class="form-inline" id="myform">
+            <div class="row">
+            <div class="col-lg-4">
+          <div class="form-group">
+          <label for="ageSelect">What is yor age?</label>
+          <div float="right">
+          <select class="form-control" name="age">
+            <option>Under 19</option>
+            <option>20-30</option>
+            <option>30-40</option>
+            <option>40-50</option>
+            <option>50+</option>
+          </select>
+        </div>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+          <label for="savingsAccount">Do you have a savings account?</label>
+          <select class="form-control" name="bankaccount">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not Sure</option>
+          </select>
+          </div>
+          <br>
+          <div class="form-group">
+          <label for="ageSelect">Do you have an RRSP account?</label>
+          <select class="form-control" name="rrsp">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not Sure</option>
+          </select>
+          </div>
+          <br>
+          <div class="form-group">
+          <label for="ageSelect">Do you have any kids or dependents?</label>
+          <select class="form-control" name="kids">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          </div>
+
+
+
+
+
+        </form>
+
+</div>
+      <div class="modal-footer">
+        <button type="button" id="loginModalSubmit" class="btn btn-default" data-dismiss="modal">Let's Go!</button>
+      </div>
+
+
+  </div>
+</div>
   </body>
 </html>
