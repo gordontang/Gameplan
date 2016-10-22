@@ -5,8 +5,10 @@ import json
 app = Flask(__name__)
 mongo = PyMongo(app)
 
+
 @app.route('/')
 def hello_world():
+        print('asdf')
         return 'Hello, World!'
 
 @app.route('/new_user', methods=['POST'])
@@ -44,9 +46,20 @@ def get_user(user_id):
     #null check
     return user
 
+@app.route('/user/steve', methods=['GET'])
+def get__test_user():
+    print("in steve")
+    json_data=open('../json_mocks/user_w_journey.json').read()    
+    print json_data
+    return json_data
+
 @app.route('/update_journey_status', methods=['POST'])
 def update_user_status():
     user_id = request.form['user_id']
     user_status = request.form['status']
 
     mongo.db.users.replace_one({'_id': user_id}, user_status)
+
+if __name__ == "__main__":
+    app.run()
+
