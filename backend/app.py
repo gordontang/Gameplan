@@ -9,7 +9,16 @@ mongo = PyMongo(app)
 def hello_world():
         return 'Hello, World!'
 
-@app.route('/new_user', methods=['POST'])
+@app.route('/add_survey', methods=['POST'])
+def add_sign_in_survey():
+    pass
+
+@app.route('/sign_in_survey', methods=['GET'])
+def get_sign_in_survey():
+    survey = mongo.db.survey.find().sort('upload_date', PyMongo.DESCENDING)[0]
+    return survey
+
+@app.route('/create_new_user', methods=['POST'])
 def create_user(user_key):
     survey_results = request.form['survey_results']
 
@@ -26,8 +35,12 @@ def get_all_journeys():
     journeys = mongo.db.journeys.find()
     return journeys
 
-@app.route('/add_journey', methods=['POST'])
-def add_journey():
+@app.route('/journeys', methods=['POST'])
+def upload_journey():
+    pass
+
+@app.route('/add_journey_user', methods=['POST'])
+def add_journey_user():
     user_id = request.form['user_id']
     journey_id = request.form['journey_id']
 
