@@ -1,5 +1,5 @@
 # Make Charity Great Again
-Github repo of Joan's Trendy Team for Gift the Code 
+Github repo of Trendy Team for Gift the Code 
 
 ## AWS
 - public IP: 52.207.212.173
