@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, jsonify, render_template, request, url_for
 from flask.ext.pymongo import PyMongo
 from config import init_users_db, init_journeys_db
@@ -92,7 +93,8 @@ def get_user(user_id):
 @app.route('/user/steve', methods=['GET'])
 def get__test_user():
     print("in steve")
-    json_data = json.load('../json_mocks/user_w_journey.json')
+    with open('../json_mocks/user_w_journey.json') as f:
+        json_data = json.load(f)
     print json_data
     return jsonify(json_data)
 
