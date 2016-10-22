@@ -19,8 +19,11 @@
 <script>
  var formData = new FormData();
  $(document).ready(function() {
+    //Initialize userData object-
     userData = {};
+
      $("#btnSubmit").click(function(){
+       //first join button with username and email - parses field data into userData object
            var x = $("form").serializeArray();
            console.log(x);
            $.each(x, function(i, field){
@@ -29,6 +32,19 @@
               userData[field.name] = field.value;
             });
        });
+     $("#loginModalSubmit").click(function(){
+        //second submit button from modal - again parses form data into userData object
+           console.log("in mod submit");
+           var x = $("form").serializeArray();
+           console.log(x);
+           $.each(x, function(i, field){
+              console.log(field);
+              console.log(field.name);
+              userData[field.name] = field.value;
+            });
+       });
+
+
  });
 </script>
   </head>
@@ -66,38 +82,42 @@
         <h4 class="modal-title">Additional Information</h4>
       </div>
 
-      <div class="modal-body">
+      <div id = "mod-body" class="modal-body">
         <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
+        <form class="form-inline" id="myform">
 
-        <div class="form-group">
-        <label for="ageSelect">What is yor age?</label>
-        <select class="form-control" id="ageSelect">
-          <option>Under 19</option>
-          <option>20-30</option>
-          <option>30-40</option>
-          <option>40-50</option>
-          <option>50+</option>
-        </select>
-      </div>
+          <div class="form-group">
+          <label for="ageSelect">What is yor age?</label>
+          <select class="form-control" name="ageSelect">
+            <option>Under 19</option>
+            <option>20-30</option>
+            <option>30-40</option>
+            <option>40-50</option>
+            <option>50+</option>
+          </select>
+          </div>
 
-      <div class="form-check">
-        <p>Do you have a Savings Account?</p>
+
+          <div class="form-check">
+          <p>Do you have a Savings Account?</p>
+            <label class="form-check-inline">
+            <input class="form-check-input" type="checkbox" name="bkCheckBoxYes" value="yes"> Yes
+          </label>
           <label class="form-check-inline">
-          <input class="form-check-input" type="checkbox" id="bkCheckBoxYes" value="yes"> Yes
-        </label>
-        <label class="form-check-inline">
-          <input class="form-check-input" type="checkbox" id="bkCheckBoxNo" value="no"> No
-        </label>
-        <label class="form-check-inline">
-          <input class="form-check-input" type="checkbox" id="bkCheckBoxNotSure" value="notSure"> Not Sure
-        </label>
-      </div>
-    </div>
+            <input class="form-check-input" type="checkbox" name="bkCheckBoxNo" value="no"> No
+          </label>
+          <label class="form-check-inline">
+            <input class="form-check-input" type="checkbox" name="bkCheckBoxNotSure" value="notSure"> Not Sure
+          </label>
+        </div>
 
+        </form>
+
+</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="loginModalSubmit" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-    </div>
+
 
   </div>
 </div>
