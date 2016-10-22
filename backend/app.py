@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request, url_for
 from flask.ext.pymongo import PyMongo
 from config import init_users_db, init_journeys_db
 import json
-
+import urllib2
 app = Flask(__name__) 
 from crossdomain import crossdomain
 
@@ -56,7 +56,7 @@ def journey_form():
 
 @app.route('/user_journey/<user_id>', methods=['GET'])
 @crossdomain(origin='*')
-def get_user(user_id):
+def get_user_journey(user_id):
     journey = users_db.db.journey.find_one_or_404({'user': user_id})
     #null check
     journey.pop('_id')
@@ -64,20 +64,28 @@ def get_user(user_id):
     result = json.dumps(journey)
     return result
 
-@app.route('/user/steve', methods=['GET'])
+@app.route('/user/<user_name>', methods=['GET'])
 @crossdomain(origin='*')
-def get__test_user():
-    print("in steve")
-    json_data=open('../json_mocks/user_w_journey.json').read()    
-    print json_data
-    return json_data
+def get_user(user_name):
+    user = users_db.db.info.find_one_or_404({'user': user_name})
+    user.pop('_id')
+    print user
+    return json.dumps(user)
 
-@app.route('/update_journey_status', methods=['POST'])
+#@app.route('/update_journey_status', methods=['POST'])
+@app.route('/update_user_journey/<user_name>/<journey_id>/<flag>', methods=['GET'])
 @crossdomain(origin='*')
-def update_user_status():
-    user_id = request.form['user_id']
-    user_status = request.form['status']
-    mongo.db.users.replace_one({'_id': user_id}, user_status)
+def update_user_status(user_name, journey_id, flag):
+    user_journey = users_db.db.journey.\
+                     find_one_or_404({
+                                        'user': user_name,
+                                        'journeys' : {"$elemMatch": {'journey':journey_id}}
+                                      })
+    res = user_journey.pop('_id')
+    print user_journey
+    #user_status = request.form['status']
+    #mongo.db.users.replace_one({'_id': user_id}, user_status)
+    return json.dumps(user_journey)
 
 if __name__ == "__main__":
     users_db=init_users_db(app)
