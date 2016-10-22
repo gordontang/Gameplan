@@ -80,19 +80,21 @@ def get_all_journeys():
         entry.pop('_id')
     return jsonify(journeys)
 
-@app.route('/add_journey', methods=['POST'])
+@app.route('/assigned_journey', methods=['POST'])
 @crossdomain(origin='*')
 def add_journey():
-    username = request.form['user_id']
-    journey_id = request.form['journey_id']
-    journey = journeys_db.db.test.find_one({'_id': journey_id})
-    users_db.db.journeys.update( {'user': username}
-                         , {'$push': {'journeys': { "journey": journey
+    username = request.form['user_name']
+    journeyname = request.form['journey_name']
+    journey = journeys_db.db.test.find_one({'journey': journeyname})
+    
+    users_db.db.journey.update( {'user': username}
+                         , {'$push': {'journeys': { "journey": journeyname
+                                                  , "steps": journey['steps']
                                                   , "complete": False
                            }}}
                          )
 
-@app.route('/create_journey')
+@app.route('/assign_journey')
 @crossdomain(origin='*')
 def journey_form():
     return render_template('journey_form.html')
@@ -103,6 +105,7 @@ def get_user(user_id):
     journey = users_db.db.journey.find_one_or_404({'user': user_id})
     #null check
     journey.pop('_id')
+    print journey
     result = json.dumps(journey)
     return result
 
