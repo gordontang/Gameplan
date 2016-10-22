@@ -45,7 +45,7 @@ def add_journey():
                          )
 
 @app.route('/user_journey/<user_id>', methods=['GET'])
-def get_user(user_id):
+def get_user_journey(user_id):
     journey = mongo.db.journey.find_one_or_404({'user': user_id})
     #null check
     journey.pop('_id')
