@@ -25,7 +25,6 @@
     color: white;
     text-shadow: black 0.1em 0.1em 0.2em
     }
-
       </style>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -94,25 +93,25 @@
 </div>
 
 
-
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="width:75%; height:65%">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Additional Information</h4>
-        <img src="static/img_logo_header.jpg" class="img-responsive">
+        <!--<img src="static/img_logo_header.jpg" class="img-responsive">-->
       </div>
 
       <div id = "mod-body" class="modal-body">
-        <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
-        <form class="form-inline" id="myform">
-
+          <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
+          <form class="form-inline" id="myform">
+            <div class="row">
+            <div class="col-lg-4">
           <div class="form-group">
           <label for="ageSelect">What is yor age?</label>
+          <div float="right">
           <select class="form-control" name="age">
             <option>Under 19</option>
             <option>20-30</option>
@@ -120,6 +119,7 @@
             <option>40-50</option>
             <option>50+</option>
           </select>
+        </div>
           </div>
 
           <br>
