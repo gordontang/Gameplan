@@ -1,0 +1,25 @@
+{
+"journey":"rrsp",
+"steps":[
+  { "type":"learning",
+    "description":"Learn about Banking Services",
+  "link":"http://prospercanada.org/prospercanada/media/PDF/Facilitator%20Tools/English/Module%204/Participant_Handbook_Module-4.pdf",
+  "points":"10"},
+  { "type":"learning",
+    "description":"learn about savings",
+  "link":"http://prospercanada.org/prospercanada/media/PDF/Facilitator%20Tools/English/Module%205/Participant_Handbook_Module-5.pdf",
+  "points":"5"},
+  { "type":"behavioral",
+    "description":"Visit bank and open a savings account",
+  "link":"",
+  "points":"5"},
+  { "type":"behavioral",
+    "description":"Depost $50 in account",
+  "link":"",
+  "points":"10"},
+  { "type":"behavioral",
+    "description":"Setup Auto deposit",
+  "link":"",
+  "points":"25"}
+]
+}
