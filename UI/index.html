@@ -3,37 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Make charities great again</title>
+    <title>Make charities great again</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js.cookie.js"></script>
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="login.js"></script>
-    <style>
-      #emailSignUp {
-      text-align: right;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      }
-      .jumbotron {
-    margin-bottom: 0px;
-    background-image: url(static/photo-1470083748587-df49227c0505.jpeg);
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 600px;
-    color: white;
-    text-shadow: black 0.1em 0.1em 0.2em
-    }
-      </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="margin-bottom:-10px;">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">Game Plan</a>
@@ -42,15 +25,15 @@
         <div class="navbar-collapse collapse">
           <form id="signin" class="navbar-form navbar-right" role="form">
               <div class="form-group">
-                <label for="userName">User Name</label>
-                <input type="text" class="form-control" name="user" placeholder="Jane_Doe" style="height:30px">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" placeholder="you@example.com" style="height:30px">
               </div>
               <div class="form-group">
-                <label for="emailInput">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="jane.doe@example.com" style="height:30px" >
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Password" style="height:30px" >
               </div>
-            <a id="login-button" href="">Login</a>
-            <button  id="btnSubmit" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
+              <button id="#login-button" type="button" class="btn btn-success" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Login</button>
+              <button id="btnSubmit" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
           </form>
         </div>
 
