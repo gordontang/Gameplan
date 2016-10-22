@@ -38,16 +38,62 @@
         </div>
     </nav>
 
-    <div class="jumbotron">
+<div class="jumbotron">
+  <div class="row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6" id="jumbotext">
+  <h1>SET YOUR GOALS</h1>
+  <h1>TRACK PROGRESS</h1>
+  <h1>GET AHEAD</h1>
+</div>
+</div>
+</div>
+
+<div id="jModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:75%; height:65%">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div id = "mod-body" class="modal-body">
       <div class="row">
-        <div class="col-md-6"></div>
-          <div class="col-md-6" id="jumbotext">
-              <h1>SET YOUR GOALS</h1>
-              <h1>TRACK PROGRESS</h1>
-              <h1>GET AHEAD</h1>
-          </div>
-        </div>
+    	<div class="col-lg-3">
+    				<div class="cuadro_intro_hover " style="background-color:#cccccc;">
+						<p style="text-align:center; margin-top:20px;">
+							<img src="static/creditcard300.png" class="img-responsive" alt="">
+						</p>
+						<div class="caption">
+							<div class="blur"></div>
+							<div class="caption-text">
+								<h3 style="padding:10px;">Get out of Debt</h3>
+								<p>Build a gameplan to get out of debt and rebuild your credit</p>
+								<button id="btnSubmit" type="button" class="btn btn-info"> Add </type>
+							</div>
+						</div>
+					</div>
+	    </div>
+      <div class="col-lg-3">
+    				<div class="cuadro_intro_hover " style="background-color:#cccccc;">
+						<p style="text-align:center; margin-top:20px;">
+							<img src="static/creditcard300.png" class="img-responsive" alt="">
+						</p>
+						<div class="caption">
+							<div class="blur"></div>
+							<div class="caption-text">
+								<h3 style="padding:10px;">Get out of Debt</h3>
+								<p>Build a gameplan to get out of debt and rebuild your credit</p>
+								<button id="btnSubmit" type="button" class="btn btn-info"> Add </type>
+							</div>
+						</div>
+					</div>
+	    </div>
     </div>
+    </div>
+    <div class="modal-footer">
+      <button id="loginModalSubmit" type="button" class="btn btn-success" data-dismiss="modal">Finish</button>
+    </div>
+  </div>
+  </div>
+</div>
 
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -147,7 +193,7 @@
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Sign up</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#jModal">Next</button>
           </div>
         </div>
       </div>
