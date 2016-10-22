@@ -1,5 +1,6 @@
 {
 "journey":"rrsp",
+"current_step":"0",
 "steps":[
   { "type":"learning",
     "description":"Learn about Banking Services",
