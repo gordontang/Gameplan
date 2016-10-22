@@ -2,16 +2,78 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Make charities great again">
-    <title>Make charities great again</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Make charities great again</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+      #emailSignUp {
+      text-align: center;
+      }
+      </style>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script>
+ var formData = new FormData();
+ $(document).ready(function() {
+    userData = {};
+     $("#btnSubmit").click(function(){
+           var x = $("form").serializeArray();
+           console.log(x);
+           $.each(x, function(i, field){
+              console.log(field);
+              console.log(field.name);
+              userData[field.name] = field.value;
+            });
+       });
+ });
+</script>
   </head>
 
   <body>
-    <h1>ola!</h1>
+<div class="jumbotron">
+  <h1 class="text-center">Prosper Canada Goals</h1>
+  <p class="text-center">Personalized plans to help you reach your goals.</p>
+</div>
+<div id="emailSignUp">
+  <div class="container">
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="userName">User Name</label>
+        <input type="text" class="form-control" name="userName" placeholder="Jane Doe">
+      </div>
+      <div class="form-group">
+        <label for="emailInput">Email</label>
+        <input type="email" class="form-control" name="emailInput" placeholder="jane.doe@example.com">
+      </div>
+      <button  id="btnSubmit" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign up</button>
+      </form>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
   </body>
 </html>
