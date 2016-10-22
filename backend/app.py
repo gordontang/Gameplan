@@ -62,10 +62,10 @@ def get__test_user():
 def update_user_status():
     user_id = request.form['user_id']
     user_status = request.form['status']
-
     mongo.db.users.replace_one({'_id': user_id}, user_status)
 
 if __name__ == "__main__":
     users_db=init_users_db(app)
     journeys_db=init_journeys_db(app)
-    app.run(port=27020)
+    app.run(host='0.0.0.0',port=27020, debug=True)
+
