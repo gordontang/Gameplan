@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, render_template, request, url_for
 from flask.ext.pymongo import PyMongo
 from config import init_users_db, init_journeys_db
 import json
@@ -24,24 +24,25 @@ def create_user(user_key):
 
 @app.route('/journeys', methods=['GET'])
 def get_all_journeys():
-    journeys = journeys_db.db.test.find_one_or_404({'journey':'rrsp'})
-    print journeys
-    for j in journeys:
-        print journeys
-    journeys.pop('_id')
-    return json.dumps(journeys)
+    journeys = list(journeys_db.db.test.find())
+    for entry in journeys:
+        entry.pop('_id')
+    return jsonify(journeys)
 
 @app.route('/add_journey', methods=['POST'])
 def add_journey():
-    user_id = request.form['user_id']
+    username = request.form['user_id']
     journey_id = request.form['journey_id']
-
-    journey = mongo.db.journeys.find_one({'_id': journey_id})
-    mongo.db.users.update( {'_id': user_id}
+    journey = journeys_db.db.test.find_one({'_id': journey_id})
+    users_db.db.journeys.update( {'user': username}
                          , {'$push': {'journeys': { "journey": journey
                                                   , "complete": False
                            }}}
                          )
+
+@app.route('/create_journey')
+def journey_form():
+    return render_template('journey_form.html')
 
 @app.route('/user_journey/<user_id>', methods=['GET'])
 def get_user(user_id):
