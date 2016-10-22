@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js.cookie.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
     <style>
       #emailSignUp {
       text-align: right;
@@ -27,7 +31,6 @@
     }
       </style>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
  var formData = new FormData();
  $(document).ready(function() {
@@ -55,10 +58,10 @@
               userData[field.name] = field.value;
             });
             //submit to endpoint
-            $.post( "test.php", JSON.stringify(userData))
-              .done(function( data ) {
-                alert( "Data Loaded: " + data );
-              });
+            //$.post( "test.php", JSON.stringify(userData))
+            //  .done(function( data ) {
+            //    alert( "Data Loaded: " + data );
+            //  });
        });
 
  });
@@ -66,21 +69,29 @@
   </head>
 
   <body>
-    <div id="emailSignUp">
-      <div class="container">
-        <form class="form-inline">
-          <div class="form-group">
-            <label for="userName">User Name</label>
-            <input type="text" class="form-control" name="user" placeholder="Jane_Doe" style="height:30px">
-          </div>
-          <div class="form-group">
-            <label for="emailInput">Email</label>
-            <input type="email" class="form-control" name="email" placeholder="jane.doe@example.com" style="height:30px" >
-          </div>
-          <button  id="btnSubmit" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Game Plan</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+          <form id="signin" class="navbar-form navbar-right" role="form">
+              <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="text" class="form-control" name="user" placeholder="Jane_Doe" style="height:30px">
+              </div>
+              <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="jane.doe@example.com" style="height:30px" >
+              </div>
+            <a id="login-button" href="">Login</a>
+            <button  id="btnSubmit" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
           </form>
-      </div>
-    </div>
+        </div>
+
+    </nav>
+
 <div class="jumbotron">
   <div class="row">
   <div class="col-md-6"></div>
