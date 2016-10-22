@@ -35,6 +35,13 @@ def get_all_journeys():
         entry.pop('_id')
     return jsonify(journeys)
 
+@app.route('/get_journey/<journeyname>', methods=['GET'])
+@crossdomain(origin='*')
+def get_journey(journeyname):
+    journey=journeys_db.db.test.find_one_or_404({'journey':journeyname})
+    journey.pop('_id')
+    return jsonify(journey)
+
 @app.route('/assigned_journey', methods=['POST'])
 @crossdomain(origin='*')
 def add_journey():
