@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask.ext.pymongo import PyMongo
 import json
 
@@ -18,7 +18,7 @@ def add_sign_in_survey():
 @app.route('/sign_up_survey', methods=['GET'])
 def get_sign_up_survey():
     survey = mongo.db.survey.find().sort('upload_date', PyMongo.DESCENDING)[0]
-    return survey
+    return jsonify(survey)
 
 @app.route('/', methods=['POST'])
 def get_user_id():
@@ -44,7 +44,7 @@ def create_user(user_key):
 @app.route('/journeys', methods=['GET'])
 def get_all_journeys():
     journeys = mongo.db.journeys.find()
-    return journeys
+    return jsonify(journeys)
 
 @app.route('/journeys', methods=['POST'])
 def upload_journey():
@@ -69,14 +69,15 @@ def add_journey_user():
 def get_user(user_id):
     user = mongo.db.users.find_one({'_id': user_id})
     #null check
-    return user
+    return jsonify(user)
 
 @app.route('/user/steve', methods=['GET'])
 def get__test_user():
     print("in steve")
-    json_data = json.load('../json_mocks/user_w_journey.json')
+    with open('../json_mocks/user_w_journey.json') as f:
+        json_data = json.load(f)
     print json_data
-    return json_data
+    return jsonify(json_data)
 
 @app.route('/update_journey_status', methods=['POST'])
 def update_user_status():
@@ -84,7 +85,6 @@ def update_user_status():
     user_status = request.form['status']
 
     mongo.db.users.replace_one({'_id': user_id}, user_status)
-    return True
 
 if __name__ == "__main__":
     app.run()
