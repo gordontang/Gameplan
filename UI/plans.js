@@ -32,9 +32,9 @@ var displayJourneys = function () {
 var getJourneyIcon = function (journey) {
   switch(journey.journey) {
     case 'Start an RRSP':
-      return '../assets/savings300.png';
+      return '../assets/rrspcourt.png';
     case 'Start a Savings Account':
-      return 'y';
+      return '../assets/savings300.png';
     default:
       return '';
   }
