@@ -63,11 +63,37 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Additional Information</h4>
       </div>
+
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
+
+        <div class="form-group">
+        <label for="ageSelect">What is yor age?</label>
+        <select class="form-control" id="ageSelect">
+          <option>Under 19</option>
+          <option>20-30</option>
+          <option>30-40</option>
+          <option>40-50</option>
+          <option>50+</option>
+        </select>
       </div>
+
+      <div class="form-check">
+        <p>Do you have a Savings Account?</p>
+          <label class="form-check-inline">
+          <input class="form-check-input" type="checkbox" id="bkCheckBoxYes" value="yes"> Yes
+        </label>
+        <label class="form-check-inline">
+          <input class="form-check-input" type="checkbox" id="bkCheckBoxNo" value="no"> No
+        </label>
+        <label class="form-check-inline">
+          <input class="form-check-input" type="checkbox" id="bkCheckBoxNotSure" value="notSure"> Not Sure
+        </label>
+      </div>
+    </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
