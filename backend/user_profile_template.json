@@ -1,0 +1,9 @@
+{ "name": "Foo Bar"
+, "age": 0
+, "survey_results": {} #fill in later 
+, "points": 0
+, "journeys": [ { "journey": {} #journey object
+                , "complete": false
+                }
+              ]
+} 
