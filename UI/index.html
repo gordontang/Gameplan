@@ -36,85 +36,121 @@
               <button id="btnSubmit" type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" style="padding-top:2px; padding-bottom:2px; height:30px; vertical-align:middle">Sign up</button>
           </form>
         </div>
-
     </nav>
 
-<div class="jumbotron">
-  <div class="row">
-  <div class="col-md-6"></div>
-  <div class="col-md-6" id="jumbotext">
-  <h1>SET YOUR GOALS</h1>
-  <h1>TRACK PROGRESS</h1>
-  <h1>GET AHEAD</h1>
-</div>
-</div>
-</div>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-6"></div>
+          <div class="col-md-6" id="jumbotext">
+              <h1>SET YOUR GOALS</h1>
+              <h1>TRACK PROGRESS</h1>
+              <h1>GET AHEAD</h1>
+          </div>
+        </div>
+    </div>
 
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">We just need to know a little bit more about you to get started.</h4>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>Do you have a bank account?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <form>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">No
+                    </label>
+                  </form>
+                </div>
+              </div>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog" style="width:75%; height:65%">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Additional Information</h4>
-        <!--<img src="static/img_logo_header.jpg" class="img-responsive">-->
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>Do you have a RRSP?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <form>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="optradio">No
+                    </label>
+                  </form>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>What is your income range?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Income range<span class="caret" style="margin-left:5px;"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">0 - 10,000</a></li>
+                      <li><a href="#">10,000 - 20,000</a></li>
+                      <li><a href="#">20,000 - 30,000</a></li>
+                      <li><a href="#">30,000 - 40,000</a></li>
+                      <li><a href="#">40,000 - 50,000</a></li>
+                      <li><a href="#">More than 50,000</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>What is your age group?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Age group<span class="caret" style="margin-left:5px;"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">18 - 25</a></li>
+                      <li><a href="#">25 - 35</a></li>
+                      <li><a href="#">35 - 45</a></li>
+                      <li><a href="#">45 - 55</a></li>
+                      <li><a href="#">55 - 65</a></li>
+                      <li><a href="#">> 65</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-8">
+                    <h5>How many children do you have?</h5>
+                </div>
+                <div class="col-md-4" style="padding-top:8px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Children<span class="caret" style="margin-left:5px;"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">0</a></li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">> 4</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Sign up</button>
+          </div>
+        </div>
       </div>
-
-      <div id = "mod-body" class="modal-body">
-        <p class="text-align-center">With a little more info we can help you customize your gameplan!</p>
-        <form class="form-inline" id="myform">
-            <div class="row" align="right">
-            <div class="col-lg-4">
-          <div class="form-group">
-          <label class="qLabel" for="ageSelect">What is yor age?</label>
-          <select class="form-control" name="age">
-            <option>Under 19</option>
-            <option>20-30</option>
-            <option>30-40</option>
-            <option>40-50</option>
-            <option>50+</option>
-          </select>
-
-          </div>
-
-          <br>
-
-          <div class="form-group">
-          <label for="savingsAccount">Do you have a savings account?</label>
-          <select class="form-control" name="bankaccount">
-            <option>Yes</option>
-            <option>No</option>
-            <option>Not Sure</option>
-          </select>
-          </div>
-          <br>
-          <div class="form-group">
-          <label for="ageSelect">Do you have an RRSP account?</label>
-          <select class="form-control" name="rrsp">
-            <option>Yes</option>
-            <option>No</option>
-            <option>Not Sure</option>
-          </select>
-          </div>
-          <br>
-          <div class="form-group">
-          <label for="ageSelect">Do you have any kids or dependents?</label>
-          <select class="form-control" name="kids">
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-          </div>
-        </form>
-
-</div>
-      <div class="modal-footer">
-        <button type="button" id="loginModalSubmit" class="btn btn-default" data-dismiss="modal">Let's Go!</button>
-      </div>
-
-
-  </div>
-</div>
+    </div>
   </body>
 </html>
