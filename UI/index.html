@@ -42,8 +42,12 @@
               console.log(field.name);
               userData[field.name] = field.value;
             });
+            //submit to endpoint
+            $.post( "test.php", JSON.stringify(userData))
+              .done(function( data ) {
+                alert( "Data Loaded: " + data );
+              });
        });
-
 
  });
 </script>
@@ -59,11 +63,11 @@
     <form class="form-inline">
       <div class="form-group">
         <label for="userName">User Name</label>
-        <input type="text" class="form-control" name="userName" placeholder="Jane Doe">
+        <input type="text" class="form-control" name="user" placeholder="Jane_Doe">
       </div>
       <div class="form-group">
         <label for="emailInput">Email</label>
-        <input type="email" class="form-control" name="emailInput" placeholder="jane.doe@example.com">
+        <input type="email" class="form-control" name="email" placeholder="jane.doe@example.com">
       </div>
       <button  id="btnSubmit" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Sign up</button>
       </form>
@@ -80,6 +84,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Additional Information</h4>
+        <img src="img_logo_header.jpg" class="img-responsive">
       </div>
 
       <div id = "mod-body" class="modal-body">
@@ -88,7 +93,7 @@
 
           <div class="form-group">
           <label for="ageSelect">What is yor age?</label>
-          <select class="form-control" name="ageSelect">
+          <select class="form-control" name="age">
             <option>Under 19</option>
             <option>20-30</option>
             <option>30-40</option>
@@ -97,25 +102,43 @@
           </select>
           </div>
 
+          <br>
 
-          <div class="form-check">
-          <p>Do you have a Savings Account?</p>
-            <label class="form-check-inline">
-            <input class="form-check-input" type="checkbox" name="bkCheckBoxYes" value="yes"> Yes
-          </label>
-          <label class="form-check-inline">
-            <input class="form-check-input" type="checkbox" name="bkCheckBoxNo" value="no"> No
-          </label>
-          <label class="form-check-inline">
-            <input class="form-check-input" type="checkbox" name="bkCheckBoxNotSure" value="notSure"> Not Sure
-          </label>
-        </div>
+          <div class="form-group">
+          <label for="savingsAccount">Do you have a savings account?</label>
+          <select class="form-control" name="bankaccount">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not Sure</option>
+          </select>
+          </div>
+          <br>
+          <div class="form-group">
+          <label for="ageSelect">Do you have an RRSP account?</label>
+          <select class="form-control" name="rrsp">
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not Sure</option>
+          </select>
+          </div>
+          <br>
+          <div class="form-group">
+          <label for="ageSelect">Do you have any kids or dependents?</label>
+          <select class="form-control" name="kids">
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          </div>
+
+
+
+
 
         </form>
 
 </div>
       <div class="modal-footer">
-        <button type="button" id="loginModalSubmit" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="loginModalSubmit" class="btn btn-default" data-dismiss="modal">Let's Go!</button>
       </div>
 
 
