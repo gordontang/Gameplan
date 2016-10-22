@@ -1,4 +1,4 @@
-# gfc_trendy_team
+# Make Charity Great Again
 Github repo of Joan's Trendy Team for Gift the Code 
 
 ## AWS
