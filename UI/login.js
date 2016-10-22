@@ -26,7 +26,7 @@ $(document).ready(function() {
            //submit to endpoint
            $.post( "http://ec2-54-167-222-78.compute-1.amazonaws.com:27020/new_user", JSON.stringify(userData))
              .done(function( data ) {
-               alert( "Data Loaded: " + data );
+              //send to landing 
              });
       });
 
