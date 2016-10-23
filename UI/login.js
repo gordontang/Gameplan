@@ -24,9 +24,9 @@ $(document).ready(function() {
              userData[field.name] = field.value;
            });
            //submit to endpoint
-           $.post( "http://ec2-54-167-222-78.compute-1.amazonaws.com:27020/new_user", JSON.stringify(userData))
+           $.post( "http://ec2-54-167-222-78.compute-1.amazonaws.com:27021/new_user", JSON.stringify(userData))
              .done(function( data ) {
-              //send to landing 
+              //send to landing
              });
       });
 
