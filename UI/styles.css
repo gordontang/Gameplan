@@ -10,6 +10,10 @@
   src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
 
+body {
+  font-family: "San Francisco";
+}
+
 .upper {
   text-transform: uppercase;
   text-align: right;
@@ -79,7 +83,3 @@
 		top:-20px;
 		width: 100%;
 	}
-
-body {
-  font-family: "San Francisco";
-}
