@@ -1,4 +1,4 @@
-{
+[{
 "journey":"Start a Savings Account",
 "current_step":"0",
 "steps":[
@@ -28,4 +28,4 @@
   "points":"25",
   "complete":"false"}
 ]
-}
+}]
