@@ -2,6 +2,17 @@ var formData = new FormData();
 $(document).ready(function() {
    //Initialize userData object-
    userData = {};
+   userData["journeys"] =[];
+   $("#btnSubmitDebt").click(function(){
+     userData["journeys"].push("Get out of Debt");
+   });
+   $("#btnSubmitRRSP").click(function(){
+     userData["journeys"].push("Start an RRSP");
+   });
+   $("#btnSubmitSavings").click(function(){
+     userData["journeys"].push("Start a Savings Account");
+   });
+
 
     $("#btnSubmit").click(function(){
       //first join button with username and email - parses field data into userData object
