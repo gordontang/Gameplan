@@ -1,7 +1,14 @@
 $(document).ready(function() {
   var data = JSON.parse($.cookie("data"));
+  console.log('a');
+  console.log(data);
+  console.log('b');
   var index = $.cookie("journey-index");
-  var journey = data.journeys[index];
+  console.log("jindex");
+  console.log(index);
+  var journey = data.journey_details[index];
+  console.log("journey");
+  console.log(journey);
 
   $('#logout-button').click(function (e) {
     e.preventDefault();
@@ -46,9 +53,9 @@ var displaySteps = function (journey) {
 var getJourneyIcon = function (journey) {
   switch(journey.journey) {
     case 'Start an RRSP':
-      return '../assets/rrspcourt.png';
+      return 'static/rrspcourt.png';
     case 'Start a Savings Account':
-      return '../assets/savings300.png';
+      return 'static/savings300.png';
     default:
       return '';
   }

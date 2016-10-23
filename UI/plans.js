@@ -9,6 +9,7 @@ $(document).ready(function() {
   });
 
   $('.journey-button').click(function (e) {
+    console.log(e);
     $.cookie("journey-index", e.target.getAttribute('selection'));
     window.location.href = "journey.html";
   });
@@ -16,12 +17,17 @@ $(document).ready(function() {
 
 var displayJourneys = function () {
   var user = JSON.parse($.cookie("data"));
+  console.log(user);
   var journeys = user.journeys;
+  console.log(journeys);
+  console.log(journeys.length);
   var i;
   var node = $('#journeys');
 
   for (i = 0; i < journeys.length; i++) {
+    console.log(i);
     var icon = getJourneyIcon(journeys[i]);
+    console.log(icon);
     var e = $('<div class="col-md-4 text-center"><img height="300" width="300" /><button type="button" class="btn btn-info journey-button" style="margin-top:10px;">GET MOVING</button></div>');
     $('img', e).attr('src', icon);
     $('button', e).attr('selection', i);
@@ -30,19 +36,22 @@ var displayJourneys = function () {
 };
 
 var getJourneyIcon = function (journey) {
-  switch(journey.journey) {
+  console.log("looking for icon");
+  console.log(journey);
+  //not catching
+  switch(journey) {
     case 'Start an RRSP':
-      return '../assets/rrspcourt.png';
+      return 'static/rrspcourt.png';
     case 'Start a Savings Account':
-      return '../assets/savings300.png';
+      return 'static/savings300.png';
     default:
-      return '';
+      return 'static/rrspcourt.png';
   }
 };
 
 var displayUserInfo = function () {
   var user = JSON.parse($.cookie("data"));
-  $('#username')[0].innerHTML = 'Welcome ' + user.user + '!';
+  $('#username')[0].innerHTML = 'Welcome ' + user.email + '!';
 };
 
 var captureDates = function () {
