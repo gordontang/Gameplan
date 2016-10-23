@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var next = 1;
     $(".add-more").click(function(e){
+        console.log('wtf')
         e.preventDefault();
         var addto = "#points" + next;
         var addRemove = "#points" + (next);
