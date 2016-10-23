@@ -9,6 +9,7 @@ $(document).ready(function() {
   });
 
   $('.journey-button').click(function (e) {
+    console.log(e);
     $.cookie("journey-index", e.target.getAttribute('selection'));
     window.location.href = "journey.html";
   });
@@ -19,10 +20,12 @@ var displayJourneys = function () {
   console.log(user);
   var journeys = user.journeys;
   console.log(journeys);
+  console.log(journeys.length);
   var i;
   var node = $('#journeys');
 
   for (i = 0; i < journeys.length; i++) {
+    console.log(i);
     var icon = getJourneyIcon(journeys[i]);
     console.log(icon);
     var e = $('<div class="col-md-4 text-center"><img height="300" width="300" /><button type="button" class="btn btn-info journey-button" style="margin-top:10px;">GET MOVING</button></div>');
