@@ -103,13 +103,6 @@ def add_journey_user():
                            }}
                          )
 
-@app.route('/user/<user_id>', methods=['GET'])
-@crossdomain(origin='*')
-def get_user(user_id):
-    user = mongo.db.users.find_one({'user': user_id})
-    #null check
-    return jsonify(user)
-
 #@app.route('/user/steve', methods=['GET'])
 #def get__test_user():
 #    print("in steve")
