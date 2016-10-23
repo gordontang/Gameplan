@@ -2,6 +2,17 @@ var formData = new FormData();
 $(document).ready(function() {
    //Initialize userData object-
    userData = {};
+   userData["journeys"] =[];
+   $("#btnSubmitDebt").click(function(){
+     userData["journeys"].push("Get out of Debt");
+   });
+   $("#btnSubmitRRSP").click(function(){
+     userData["journeys"].push("Start an RRSP");
+   });
+   $("#btnSubmitSavings").click(function(){
+     userData["journeys"].push("Start a Savings Account");
+   });
+
 
     $("#btnSubmit").click(function(){
       //first join button with username and email - parses field data into userData object
@@ -24,9 +35,9 @@ $(document).ready(function() {
              userData[field.name] = field.value;
            });
            //submit to endpoint
-           $.post( "http://ec2-54-167-222-78.compute-1.amazonaws.com:27020/new_user", JSON.stringify(userData))
+           $.post( "http://ec2-54-167-222-78.compute-1.amazonaws.com:27021/new_user", JSON.stringify(userData))
              .done(function( data ) {
-              //send to landing 
+              //send to landing
              });
       });
 
