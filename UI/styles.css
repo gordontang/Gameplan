@@ -36,6 +36,17 @@ body {
   text-shadow: black 0.1em 0.1em 0.2em
 }
 
+.admintron {
+  margin-bottom: 0px;
+  background-image: url(static/Admin_Page.jpeg);
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  min-height: 150px;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em
+
+}
+
 .modal-dialog {
   margin-top : 10em;
 }
