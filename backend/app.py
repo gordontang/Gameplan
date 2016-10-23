@@ -18,16 +18,20 @@ def insert_temp_user():
 @app.route('/brand_new_journey', methods=['GET','POST'])
 @crossdomain(origin='*')
 def new_journey_form():
+    print request.form
     journey_name=request.form['journey_name']
-    journey_complete=False
-    steps=['']*(len(request.form)-1)
+    num_steps=(len(request.form)-1)/4
+    steps=[]
 
-    for k,v in request.form.items():
-        if 'field' in k: #not journey name
-            steps[int(k.split('field')[1]) -1]=v
+    for i in range(1,num_steps+1):
+        step={}
+        step['type']=request.form['type' + str(i)]
+        step['description']=request.form['desc' + str(i)]  
+        step['link']=request.form['link' + str(i)]  
+        step['points']=request.form['points' + str(i)]  
+        steps.append(step)
+    complete_record={'journey':journey_name, "steps":steps}
     
-    filled_steps = [{'type':'learning', 'description':step,'link':None,'points':10} for step in steps]
-    complete_record={'journey':journey_name, "steps":filled_steps}
     journeys_db.db.test.insert_one(complete_record)
     return "success" 
 
