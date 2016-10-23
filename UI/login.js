@@ -32,7 +32,9 @@ $(document).ready(function() {
           $.each(x, function(i, field){
              console.log(field);
              console.log(field.name);
-             userData[field.name] = field.value;
+             console.log(field.vale);
+             console.log()
+             userData[field.name] = field.value.replace(/\./gi, '');
            });
            //submit to endpoint
            $.post( "http://ec2-54-167-222-78.compute-1.amazonaws.com:27021/new_user", JSON.stringify(userData))
