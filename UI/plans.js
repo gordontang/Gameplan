@@ -41,11 +41,11 @@ var getJourneyIcon = function (journey) {
   //not catching
   switch(journey) {
     case 'Start an RRSP':
-      return 'static/rrspcourt.png';
+      return '../assets/rrspcourt.png';
     case 'Start a Savings Account':
-      return 'static/savings300.png';
+      return '../assets/savings300.png';
     default:
-      return 'static/creditcard300.png';
+      return '../assets/payoffdebt.png';
   }
 };
 
