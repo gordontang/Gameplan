@@ -123,54 +123,69 @@
           </div>
           <div class="modal-body">
             <form class="form-inline" id="myform">
-    <div class="row" align="right">
-    <div class="col-lg-9">
-  <div class="form-group">
-  <label class="qLabel" for="ageSelect">What is yor age?</label>
-  <select class="form-control" name="age">
-    <option>Under 19</option>
-    <option>20-30</option>
-    <option>30-40</option>
-    <option>40-50</option>
-    <option>50+</option>
-  </select>
+              <table style="margin-left:20px;">
+                <tr>
+                  <td>
+                    <label class="qLabel" for="ageSelect">What is yor age?</label>
+                  </td>
+                  <td>
+                    <select class="form-control" name="age">
+                      <option disabled selected value> -- select an option -- </option>
+                      <option>Under 19</option>
+                      <option>20-30</option>
+                      <option>30-40</option>
+                      <option>40-50</option>
+                      <option>50+</option>
+                    </select>
+                  </td>
+                </tr>
 
-  </div>
+                <tr>
+                  <td>
+                    <label for="savingsAccount">Do you have a savings account?</label>
+                  </td>
+                  <td>
+                    <select class="form-control" name="bankaccount">
+                      <option disabled selected value> -- select an option -- </option>
+                      <option>Yes</option>
+                      <option>No</option>
+                      <option>Not Sure</option>
+                    </select>
+                  </td>
+                </tr>
 
-  <br>
+                <tr>
+                  <td>
+                    <label for="ageSelect">Do you have an RRSP account?</label>
+                  </td>
+                  <td>
+                    <select class="form-control" name="rrsp">
+                      <option disabled selected value> -- select an option -- </option>
+                      <option>Yes</option>
+                      <option>No</option>
+                      <option>Not Sure</option>
+                    </select>
+                  </td>
+                </tr>
 
-  <div class="form-group">
-  <label for="savingsAccount">Do you have a savings account?</label>
-  <select class="form-control" name="bankaccount">
-    <option>Yes</option>
-    <option>No</option>
-    <option>Not Sure</option>
-  </select>
-  </div>
-  <br>
-  <div class="form-group">
-  <label for="ageSelect">Do you have an RRSP account?</label>
-  <select class="form-control" name="rrsp">
-    <option>Yes</option>
-    <option>No</option>
-    <option>Not Sure</option>
-  </select>
-  </div>
-  <br>
-  <div class="form-group">
-  <label for="ageSelect">Do you have any kids or dependents?</label>
-  <select class="form-control" name="kids">
-    <option>Yes</option>
-    <option>No</option>
-  </select>
-  </div>
-</form>
-
-          <div class="modal-footer">
-            <button id="loginModalSubmit" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#jModal">Next</button>
+                <tr>
+                  <td>
+                    <label for="ageSelect">Do you have any kids or dependents?</label>
+                  </td>
+                  <td>
+                    <select class="form-control" name="kids">
+                      <option disabled selected value> -- select an option -- </option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </form>
+            <div class="modal-footer">
+              <button id="loginModalSubmit" type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#jModal">Next</button>
+            </div>
           </div>
-
-      </div>
-    </div>
+        </div>
   </body>
 </html>
