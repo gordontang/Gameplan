@@ -43,9 +43,14 @@ $(document).ready(function() {
              userData[field.name] = field.value.replace(/\./gi, '');
            });
            //submit to endpoint
+           var username = userData.email;
            $.post( [_ENDPOINT+"new_user"].join(), JSON.stringify(userData))
              .done(function( data ) {
-              //send to landing
+               $.get([_ENDPOINT+"user_journey/"].join() + username).then(function (data) {
+                 //$.cookie("data", JSON.stringify(data));
+                 $.cookie("data", data);
+                 window.location.href = "plans.html";
+               });
              });
       });
 

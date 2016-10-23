@@ -45,7 +45,7 @@ var getJourneyIcon = function (journey) {
     case 'Start a Savings Account':
       return 'static/savings300.png';
     default:
-      return 'static/rrspcourt.png';
+      return 'static/creditcard300.png';
   }
 };
 
