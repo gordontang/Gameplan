@@ -36,7 +36,7 @@ var displaySteps = function (journey) {
     } else {
       $('.text', e).html(steps[i].description);
     }
-    $('input').prop('checked', steps[i].complete !== "false");
+    $('input', e).prop('checked', steps[i].complete !== "false");
     node.append(e);
   }
   node.append($('<hr />'));
