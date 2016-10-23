@@ -170,29 +170,33 @@ def get_user(user_name):
     return json.dumps(user)
 
 #@app.route('/update_journey_status', methods=['POST'])
-@app.route('/update_user_journey/<user_name>/<journey_id>/<flag>', methods=['GET'])
+@app.route('/update_user_journey/<user_name>/<journey_id>/<num_steps_complete>', methods=['GET'])
 @crossdomain(origin='*')
-def update_user_status(user_name, journey_id, flag):
+def update_user_status(user_name, journey_id, num_steps_complete):
     user_journey = users_db.db.journey.\
                      find_one_or_404({'user': user_name,
                                       'journeys' : {"$elemMatch": {'journey':journey_id}}})
-    user_journey.pop('_id')
-    ix = 0
-    while ix < len(user_journey['journeys']):
-        if user_journey['journeys'][ix]['journey'] == journey_id:
+    #user_journey.pop('_id')
+    journey_num = 0
+    while journey_num < len(user_journey['journeys']):
+        if user_journey['journeys'][journey_num]['journey'] == journey_id:
             break
-        ix += 1
+        journey_num += 1
 
-    if 'journey_completed' in user_journey['journeys'][ix]:
+    journey = user_journey['journeys'][journey_num]
+
+    if 'journey_completed' in journey:
         return "Journey already completed!"
 
-    step_ix = user_journey['journeys'][ix]['current_step']
-    dt = str(datetime.now())
-    user_journey['journeys'][ix]['steps'][step_ix]['complete'] = dt.split(' ')[0]
-    user_journey['journeys'][ix]['current_step'] += 1
+    dt = str(datetime.now()).split(' ')[0]
+    for i in range(journey['current_step'], num_steps_complete + 1):
+        journey['steps'][i]['complete'] = dt
+    journey['current_step'] = num_steps_complete + 1
 
-    if user_journey['journeys'][ix]['current_step'] == len(user_journey['journeys'][ix]['steps']):
-        user_journey['journeys'][ix]['journey_completed'] = True
+    if journey['current_step'] >= len(journey['steps']):
+        journey['journey_completed'] = True
+
+    user_journey['journeys'][journey_num] = journey
 
     rec_id = users_db.db.journey.update({'user': user_name}, user_journey)
     return "success"
