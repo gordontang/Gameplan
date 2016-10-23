@@ -37,10 +37,18 @@ var displaySteps = function (journey) {
       $('.text', e).html(steps[i].description);
     }
     $('input', e).prop('checked', steps[i].complete !== "false");
+    $('input', e).change(function () {
+      var count = parseInt($('#task-count').text(), 10);
+      if($(this).is(":checked")) {
+        $('#task-count').html(--count);
+      }
+      else {
+        $('#task-count').html(++count);
+      }
+    });
     node.append(e);
   }
-  node.append($('<hr />'));
-  node.append($('<p style="font-size:2rem;">' + (steps.length - journey.current_step) + ' MORE TASKS TO GO!</p>'));
+  $('#task-count').html(steps.length - journey.current_step);
 };
 
 var getJourneyIcon = function (journey) {
