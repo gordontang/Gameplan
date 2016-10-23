@@ -4,13 +4,13 @@ from config import init_users_db, init_journeys_db
 import json
 import urllib2
 from datetime import datetime
+import journey_constructor
 
 app = Flask(__name__) 
 from crossdomain import crossdomain
 
 @crossdomain(origin='*')
-def hello_world():
-        print('asdf')
+def hello_world(): 
         return 'Hello, World!'
 
 @app.route('/new_user', methods=['POST'])
@@ -20,8 +20,11 @@ def create_user():
     user = {k: request.form[k] for k in request.form}
     i_results = users_db.db.info.insert_one(user)
     # insert user journey
-    user['journeys'] = []
-    i_results = users_db.db.journey.insert_one(user)
+    user['journeys'] = ['rrsp']
+    print user
+    full_data = journey_constructor.main(user, journeys_db.db.journeys)
+    #send user record with journey data to mongo
+    i_results = users_db.db.journey.insert_one(full_data)
     return "Success"
 
 @app.route('/create_user')
@@ -112,5 +115,4 @@ def update_user_status(user_name, journey_id, flag):
 if __name__ == "__main__":
     users_db=init_users_db(app)
     journeys_db=init_journeys_db(app)
-    app.run(host='0.0.0.0',port=27020, threaded=True, debug=True)
-
+    app.run(host='0.0.0.0',port=27021, threaded=True, debug=True)
