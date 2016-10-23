@@ -35,14 +35,14 @@ var displayJourneys = function () {
 var getJourneyIcon = function (journey) {
   console.log("looking for icon");
   console.log(journey);
-  //??
-  switch(journey.journey) {
+  //not catching
+  switch(journey) {
     case 'Start an RRSP':
-      return '../assets/rrspcourt.png';
+      return 'static/rrspcourt.png';
     case 'Start a Savings Account':
-      return '../assets/savings300.png';
+      return 'static/savings300.png';
     default:
-      return '';
+      return 'static/rrspcourt.png';
   }
 };
 
