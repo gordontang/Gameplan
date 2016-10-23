@@ -1,16 +1,25 @@
 var formData = new FormData();
+
 $(document).ready(function() {
    //Initialize userData object-
    userData = {};
    userData["journeys"] =[];
    $("#btnSubmitDebt").click(function(){
+     console.log(this);
+     xx=this;
      userData["journeys"].push("Get out of Debt");
+     this.setAttribute("class", "btn btn-success");
+     this.textContent('Added');
    });
    $("#btnSubmitRRSP").click(function(){
      userData["journeys"].push("Start an RRSP");
+     this.setAttribute("class", "btn btn-success");
+     this.textContent('Added');
    });
    $("#btnSubmitSavings").click(function(){
      userData["journeys"].push("Start a Savings Account");
+     this.setAttribute("class", "btn btn-success");
+     this.textContent('Added');
    });
 
 
