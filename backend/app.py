@@ -8,11 +8,6 @@ from datetime import datetime
 app = Flask(__name__) 
 from crossdomain import crossdomain
 
-@crossdomain(origin='*')
-def hello_world():
-        print('asdf')
-        return 'Hello, World!'
-
 @app.route('/add_survey', methods=['POST'])
 @crossdomain(origin='*')
 def add_sign_in_survey():
@@ -32,18 +27,6 @@ def get_user_id():
 
     user = mongo.db.users.find_one( {'name': user_name, 'email': user_email} )
     return user['_id']
-
-@app.route('/create_new_user', methods=['POST'])
-@crossdomain(origin='*')
-def create_user(user_key):
-    survey_results = request.form['survey_results']
-
-    new_user = json.load('user_profile_template.json')
-    new_user['survey_results'] = survey_results
-    new_user['journeys'] = []
-
-    i_results = mongo.db.users.insert_one(new_user)
-    return i_results.inserted_id
 
 @app.route('/insert_temp', methods=['GET'])
 def insert_temp_user():
