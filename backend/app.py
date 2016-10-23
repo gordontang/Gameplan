@@ -33,7 +33,6 @@ def get_user_id():
     user = mongo.db.users.find_one( {'name': user_name, 'email': user_email} )
     return user['_id']
 
-
 @app.route('/create_new_user', methods=['POST'])
 @crossdomain(origin='*')
 def create_user(user_key):
@@ -45,6 +44,36 @@ def create_user(user_key):
 
     i_results = mongo.db.users.insert_one(new_user)
     return i_results.inserted_id
+
+@app.route('/insert_temp', methods=['GET'])
+def insert_temp_user():
+    with open('../json_mocks/user_w_journey.json') as f:
+        json_data = json.load(f)
+    print dict(json_data)
+    users_db.db.journey.insert_one(dict(json_data))
+    
+    return jsonify(json_data)
+
+@app.route('/brand_new_journey', methods=['GET','POST'])
+@crossdomain(origin='*')
+def new_journey_form():
+    print request.form
+    journey_name=request.form['journey_name']
+    num_steps=(len(request.form)-1)/4
+    steps=[]
+
+    for i in range(1,num_steps+1):
+        step={}
+        step['type']=request.form['type' + str(i)]
+        step['description']=request.form['desc' + str(i)]  
+        step['link']=request.form['link' + str(i)]  
+        step['points']=request.form['points' + str(i)]  
+        steps.append(step)
+    complete_record={'journey':journey_name, "steps":steps}
+    
+    journeys_db.db.test.insert_one(complete_record)
+    return "success" 
+
 
 @app.route('/new_user', methods=['POST'])
 @crossdomain(origin='*')
@@ -65,7 +94,9 @@ def user_form():
 @app.route('/journeys', methods=['GET'])
 @crossdomain(origin='*')
 def get_all_journeys():
-    journeys = mongo.db.journeys.find()
+    journeys = list(journeys_db.db.test.find())
+    for entry in journeys:
+        entry.pop('_id')
     return jsonify(journeys)
 
 @app.route('/journeys', methods=['POST'])
@@ -103,14 +134,6 @@ def get_user(user_id):
 #        json_data = json.load(f)
 #    print json_data
 #    return jsonify(json_data)
-
-@app.route('/update_journey_status', methods=['POST'])
-@crossdomain(origin='*')
-def update_user_status():
-    user_id = request.form['user_id']
-    user_status = request.form['status']
-
-    mongo.db.users.replace_one({'_id': user_id}, user_status)
 
 @app.route('/get_journey/<journeyname>', methods=['GET'])
 @crossdomain(origin='*')
@@ -188,4 +211,3 @@ if __name__ == "__main__":
     users_db=init_users_db(app)
     journeys_db=init_journeys_db(app)
     app.run(host='0.0.0.0',port=27020, threaded=True, debug=True)
-

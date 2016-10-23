@@ -8,7 +8,7 @@
 "journeys":
 [
 {"journey":"Start an RRSP",
-"current_step":"1",
+"current_step":1,
 "steps":[
   { "type":"learning",
     "description":"Learn about Banking Services",
@@ -38,7 +38,7 @@
 ]
 },
 {"journey":"Start a Savings Account",
-"current_step":"0",
+"current_step":0,
 "steps":[
   { "type":"learning",
     "description":"Learn about Banking Services",
