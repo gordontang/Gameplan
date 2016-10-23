@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 var showPlans = function () {
   var username = $("input:text[name=email]" ).val();
-  var _ENDPOINT = "http://ec2-54-167-222-78.compute-1.amazonaws.com:27020/user_journey/";
+  var _ENDPOINT = "http://ec2-54-167-222-78.compute-1.amazonaws.com:27021/user_journey/";
   $.get(_ENDPOINT + username).then(function (data) {
     //$.cookie("data", JSON.stringify(data));
     $.cookie("data", data);

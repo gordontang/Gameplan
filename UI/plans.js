@@ -16,12 +16,15 @@ $(document).ready(function() {
 
 var displayJourneys = function () {
   var user = JSON.parse($.cookie("data"));
+  console.log(user);
   var journeys = user.journeys;
+  console.log(journeys);
   var i;
   var node = $('#journeys');
 
   for (i = 0; i < journeys.length; i++) {
     var icon = getJourneyIcon(journeys[i]);
+    console.log(icon);
     var e = $('<div class="col-md-4 text-center"><img height="300" width="300" /><button type="button" class="btn btn-info journey-button" style="margin-top:10px;">GET MOVING</button></div>');
     $('img', e).attr('src', icon);
     $('button', e).attr('selection', i);
@@ -30,6 +33,9 @@ var displayJourneys = function () {
 };
 
 var getJourneyIcon = function (journey) {
+  console.log("looking for icon");
+  console.log(journey);
+  //??
   switch(journey.journey) {
     case 'Start an RRSP':
       return '../assets/rrspcourt.png';
@@ -42,7 +48,7 @@ var getJourneyIcon = function (journey) {
 
 var displayUserInfo = function () {
   var user = JSON.parse($.cookie("data"));
-  $('#username')[0].innerHTML = 'Welcome ' + user.user + '!';
+  $('#username')[0].innerHTML = 'Welcome ' + user.email + '!';
 };
 
 var captureDates = function () {
