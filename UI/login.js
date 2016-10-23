@@ -1,5 +1,5 @@
 var formData = new FormData();
-var _ENDPOINT = "http://ec2-54-167-222-78.compute-1.amazonaws.com:27021/"
+var _ENDPOINT = "http://ec2-54-167-222-78.compute-1.amazonaws.com:27012/"
 $(document).ready(function() {
    //Initialize userData object-
    userData = {};
