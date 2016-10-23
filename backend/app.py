@@ -173,30 +173,30 @@ def get_user(user_name):
 @app.route('/update_user_journey/<user_name>/<journey_id>/<num_steps_complete>', methods=['GET'])
 @crossdomain(origin='*')
 def update_user_status(user_name, journey_id, num_steps_complete):
+    num_steps_complete = int(num_steps_complete)
     user_journey = users_db.db.journey.\
-                     find_one_or_404({'user': user_name,
-                                      'journeys' : {"$elemMatch": {'journey':journey_id}}})
+                     find_one_or_404({'email': user_name})
     #user_journey.pop('_id')
     journey_num = 0
-    while journey_num < len(user_journey['journeys']):
-        if user_journey['journeys'][journey_num]['journey'] == journey_id:
+    while journey_num < len(user_journey['journey_details']):
+        if user_journey['journey_details'][journey_num]['journey'] == journey_id:
             break
         journey_num += 1
 
-    journey = user_journey['journeys'][journey_num]
-
+    journey = user_journey['journey_details'][journey_num]
+    print journey
     if 'journey_completed' in journey:
         return "Journey already completed!"
 
     dt = str(datetime.now()).split(' ')[0]
-    for i in range(journey['current_step'], num_steps_complete + 1):
+    for i in range(int(journey['current_step']), num_steps_complete + 1):
         journey['steps'][i]['complete'] = dt
     journey['current_step'] = num_steps_complete + 1
 
     if journey['current_step'] >= len(journey['steps']):
         journey['journey_completed'] = True
 
-    user_journey['journeys'][journey_num] = journey
+    user_journey['journey_details'][journey_num] = journey
 
     rec_id = users_db.db.journey.update({'user': user_name}, user_journey)
     return "success"
@@ -205,4 +205,4 @@ if __name__ == "__main__":
     users_db=init_users_db(app)
     journeys_db=init_journeys_db(app)
 
-    app.run(host='0.0.0.0',port=27021, threaded=True, debug=True)
+    app.run(host='0.0.0.0',port=27012, threaded=True, debug=True)
