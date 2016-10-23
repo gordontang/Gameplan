@@ -5,6 +5,7 @@ import json
 import urllib2
 from datetime import datetime
 import journey_constructor
+import ast
 
 app = Flask(__name__) 
 from crossdomain import crossdomain
@@ -17,11 +18,13 @@ def hello_world():
 @crossdomain(origin='*')
 def create_user():
     # insert user
-    user = {k: request.form[k] for k in request.form}
-    i_results = users_db.db.info.insert_one(user)
-    # insert user journey
-    user['journeys'] = ['rrsp']
-    print user
+    #user = {k: request.form[k] for k in request.form}   
+    user = request.form.keys()[0]
+    user = ast.literal_eval(user)
+    print user 
+   
+    i_results = users_db.db.info.insert_one(user)     
+    
     full_data = journey_constructor.main(user, journeys_db.db.journeys)
     #send user record with journey data to mongo
     i_results = users_db.db.journey.insert_one(full_data)
@@ -69,8 +72,11 @@ def journey_form():
 @app.route('/user_journey/<user_id>', methods=['GET'])
 @crossdomain(origin='*')
 def get_user_journey(user_id):
-    journey = users_db.db.journey.find_one_or_404({'user': user_id})
+    print user_id
+    journey = users_db.db.journey.find_one_or_404({'email': user_id})
     #null check
+    print 'j'
+    print journey
     journey.pop('_id')
     print journey
     result = json.dumps(journey)

@@ -13,7 +13,8 @@ def main(user, journeys_coll):
 def get_journey(journeyname, journeys_coll):
     #json_data=open('../json_mocks/journey.json').read()
     #jdata=json.loads(json_data)
-    jdata = journeys_coll.find_one({'journey': journeyname})
+    jdata = journeys_coll.find_one({'journey': journeyname}, {'_id': 0})
+    print jdata
     return jdata
 
 
@@ -21,9 +22,10 @@ def construct(user, journeys_coll):
     #start new object with the user data
     full_data=deepcopy(user)
     #remove the existing journey list
-    full_data["journeys"]=[]
+    full_data["journey_details"]=[]
     for j in user["journeys"]:
-        full_data["journeys"].append(get_journey(j, journeys_coll))
+        print "looking for Journey {j}".format(j=j)
+        full_data["journey_details"].append(get_journey(j, journeys_coll))
     return full_data
 
 def write_full(full_data):
